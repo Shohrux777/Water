@@ -1,0 +1,173 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ApiAll.Contex;
+using ApiAll.Model.hospital.analiz;
+using ApiAll.Model.tekistil;
+using Newtonsoft.Json.Linq;
+
+namespace ApiAll.Controllers.hospital
+{
+    [ApiExplorerSettings(GroupName = "v4")]
+    [Route("api/[controller]")]
+    [ApiController]
+    public class HospitalCovidQonController : ControllerBase
+    {
+        private readonly ApplicationContext _context;
+
+        public HospitalCovidQonController(ApplicationContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/HospitalCovidQon
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<HospitalCovidQon>>> GetHospitalCovidQon()
+        {
+            return await _context.HospitalCovidQon.ToListAsync();
+        }
+
+        [HttpGet("getFullInfoById")]
+        public async Task<ActionResult<HospitalCovidQon>> getFullInfoById([FromQuery] long id)
+        {
+            var item = await _context
+                .HospitalCovidQon
+                .Include(p => p.patients)
+                .Where(p => p.id == id).ToListAsync();
+
+            if (item == null || item.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            return item.First();
+        }
+
+        [HttpGet("getPagination")]
+        public async Task<ActionResult<TexPaginationModel>> getPagination([FromQuery] int page, [FromQuery] int size)
+        {
+            TexPaginationModel paginationModel = new TexPaginationModel();
+            List<HospitalCovidQon> itemList = await _context.HospitalCovidQon
+                .OrderByDescending(p => p.id)
+                .Include(p => p.patients)
+                .Skip(size * page).Take(size)
+                .ToListAsync();
+            if (itemList == null)
+            {
+                itemList = new List<HospitalCovidQon>();
+            }
+            paginationModel.items_list = JArray.FromObject(itemList);
+            paginationModel.items_count = await _context.HospitalCovidQon.CountAsync();
+            paginationModel.current_item_count = itemList.Count();
+            paginationModel.current_page = page;
+            return paginationModel;
+        }
+
+        [HttpGet("getPaginationByPatient")]
+        public async Task<ActionResult<TexPaginationModel>> getPaginationByPatient([FromQuery] int page, [FromQuery] int size, [FromQuery] long patient_id)
+        {
+            TexPaginationModel paginationModel = new TexPaginationModel();
+            List<HospitalCovidQon> itemList = await _context.HospitalCovidQon
+                .OrderByDescending(p => p.id)
+                .Include(p => p.patients)
+                .Where(p => p.PatientsId == patient_id)
+                .Skip(size * page).Take(size)
+                .ToListAsync();
+            if (itemList == null)
+            {
+                itemList = new List<HospitalCovidQon>();
+            }
+            paginationModel.items_list = JArray.FromObject(itemList);
+            paginationModel.items_count = await _context.HospitalCovidQon
+                .Where(p => p.PatientsId == patient_id).CountAsync();
+            paginationModel.current_item_count = itemList.Count();
+            paginationModel.current_page = page;
+            return paginationModel;
+        }
+
+        // GET: api/HospitalCovidQon/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<HospitalCovidQon>> GetHospitalCovidQon(long id)
+        {
+            var hospitalCovidQon = await _context.HospitalCovidQon.FindAsync(id);
+
+            if (hospitalCovidQon == null)
+            {
+                return NotFound();
+            }
+
+            hospitalCovidQon.patients = await _context.Patients.FindAsync(hospitalCovidQon.PatientsId);
+
+            return hospitalCovidQon;
+        }
+
+        // PUT: api/HospitalCovidQon/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutHospitalCovidQon(long id, HospitalCovidQon hospitalCovidQon)
+        {
+            if (id != hospitalCovidQon.id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(hospitalCovidQon).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!HospitalCovidQonExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // POST: api/HospitalCovidQon
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPost]
+        public async Task<ActionResult<HospitalCovidQon>> PostHospitalCovidQon(HospitalCovidQon hospitalCovidQon)
+        {
+            _context.HospitalCovidQon.Update(hospitalCovidQon);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetHospitalCovidQon", new { id = hospitalCovidQon.id }, hospitalCovidQon);
+        }
+
+        // DELETE: api/HospitalCovidQon/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<HospitalCovidQon>> DeleteHospitalCovidQon(long id)
+        {
+            var hospitalCovidQon = await _context.HospitalCovidQon.FindAsync(id);
+            if (hospitalCovidQon == null)
+            {
+                return NotFound();
+            }
+
+            _context.HospitalCovidQon.Remove(hospitalCovidQon);
+            await _context.SaveChangesAsync();
+
+            return hospitalCovidQon;
+        }
+
+        private bool HospitalCovidQonExists(long id)
+        {
+            return _context.HospitalCovidQon.Any(e => e.id == id);
+        }
+    }
+}

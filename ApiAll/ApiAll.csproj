@@ -1,0 +1,138 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20210801162012_initial.cs" />
+    <Compile Remove="Migrations\20210801162012_initial.Designer.cs" />
+    <Compile Remove="Migrations\20210803092952_initial.cs" />
+    <Compile Remove="Migrations\20210803092952_initial.Designer.cs" />
+    <Compile Remove="Migrations\20210809081535_initial.cs" />
+    <Compile Remove="Migrations\20210809081535_initial.Designer.cs" />
+    <Compile Remove="Migrations\20210831170706_initial.cs" />
+    <Compile Remove="Migrations\20210831170706_initial.Designer.cs" />
+    <Compile Remove="Migrations\20210911192347_initial.cs" />
+    <Compile Remove="Migrations\20210911192347_initial.Designer.cs" />
+    <Compile Remove="Migrations\20211010163741_initial.cs" />
+    <Compile Remove="Migrations\20211010163741_initial.Designer.cs" />
+    <Compile Remove="Migrations\20211021095718_initial.cs" />
+    <Compile Remove="Migrations\20211021095718_initial.Designer.cs" />
+    <Compile Remove="Migrations\20211025115040_initial.cs" />
+    <Compile Remove="Migrations\20211025115040_initial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.30" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.30">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.3" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+    <PackageReference Include="System.Linq.Dynamic" Version="1.0.8" />
+    <PackageReference Include="Telegram.Bot" Version="17.0.0" />
+    <PackageReference Include="Telegram.Bot.Extensions.Polling" Version="1.0.2" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Model\settingsmodel\" />
+    <Folder Include="Controllers\marketprepaid\" />
+    <Folder Include="Controllers\hospital\analiz_unv\" />
+    <Folder Include="Model\hospital\analiz_old\" />
+    <Folder Include="Model\hospital\hospital_old\" />
+    <Folder Include="Model\hospital\telegram_bot\" />
+    <Folder Include="Model\hospital\dolg\" />
+    <Folder Include="Controllers\hospital\dolg\" />
+    <Folder Include="Controllers\hospital\telegram_bot\" />
+    <Folder Include="Controllers\tekistil\order\" />
+    <Folder Include="Controllers\tekistil\device\" />
+    <Folder Include="Controllers\tekistil\auth\" />
+    <Folder Include="Controllers\tekistil\color\" />
+    <Folder Include="Controllers\tekistil\invoice\" />
+    <Folder Include="Controllers\tekistil\batch\" />
+    <Folder Include="Controllers\tekistil\caltype\" />
+    <Folder Include="Controllers\tekistil\recipe\" />
+    <Folder Include="Model\oquv_markaz\" />
+    <Folder Include="Model\water\" />
+    <Folder Include="Controllers\tekistil\size\" />
+    <Folder Include="Controllers\tekistil\raskladki\" />
+    <Folder Include="Model\tekistil\raskladki\" />
+    <Folder Include="Model\tekistil\planning\" />
+    <Folder Include="Controllers\tekistil\planning\" />
+    <Folder Include="Model\tekistil\seworder\" />
+    <Folder Include="Controllers\tekistil\seworder\" />
+    <Folder Include="Model\tekistil\sewextrawork\" />
+    <Folder Include="Controllers\tekistil\sewextrawork\" />
+    <Folder Include="Model\tekistil\access\" />
+    <Folder Include="Controllers\tekistil\sewaccess\" />
+    <Folder Include="Model\tekistil\order_item_steps\" />
+    <Folder Include="Controllers\tekistil\order_item\" />
+    <Folder Include="Model\parking\" />
+    <Folder Include="Controllers\parking\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+    <None Remove="Model\hospital\analiz\" />
+    <None Remove="Controllers\hospital\" />
+    <None Remove="Controllers\marketprepaid\" />
+    <None Remove="Controllers\hospital\analiz_unv\" />
+    <None Remove="Model\hospital\analiz_old\" />
+    <None Remove="Model\hospital\hospital_old\" />
+    <None Remove="Model\hospital\telegram_bot\" />
+    <None Remove="Model\hospital\dolg\" />
+    <None Remove="Controllers\hospital\dolg\" />
+    <None Remove="Controllers\hospital\telegram_bot\" />
+    <None Remove="Model\hospital\reports\" />
+    <None Remove="Controllers\tekistil\order\" />
+    <None Remove="Controllers\tekistil\device\" />
+    <None Remove="Controllers\tekistil\auth\" />
+    <None Remove="Controllers\tekistil\color\" />
+    <None Remove="Controllers\tekistil\invoice\" />
+    <None Remove="Controllers\tekistil\batch\" />
+    <None Remove="Controllers\tekistil\caltype\" />
+    <None Remove="Controllers\tekistil\recipe\" />
+    <None Remove="Model\tegirmon\" />
+    <None Remove="Controllers\tegirmon\" />
+    <None Remove="Model\oquv_markaz\" />
+    <None Remove="Controllers\oquv_markaz\" />
+    <None Remove="Model\water\" />
+    <None Remove="Controllers\tekistil\size\" />
+    <None Remove="Controllers\tekistil\raskladki\" />
+    <None Remove="Model\tekistil\raskladki\" />
+    <None Remove="Model\tekistil\planning\" />
+    <None Remove="Controllers\tekistil\planning\" />
+    <None Remove="Model\tekistil\seworder\" />
+    <None Remove="Controllers\tekistil\seworder\" />
+    <None Remove="Model\tekistil\sewextrawork\" />
+    <None Remove="Controllers\tekistil\sewextrawork\" />
+    <None Remove="Model\tekistil\access\" />
+    <None Remove="Controllers\tekistil\sewaccess\" />
+    <None Remove="Model\tekistil\order_item_steps\" />
+    <None Remove="Controllers\tekistil\order_item\" />
+    <None Remove="Model\parking\" />
+    <None Remove="Controllers\parking\" />
+  </ItemGroup>
+</Project>

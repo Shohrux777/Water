@@ -1,0 +1,78 @@
+{
+  "format": 1,
+  "restore": {
+    "/usr/dotnet/water_telegram_bot/TelegramBot/TelegramBot.csproj": {}
+  },
+  "projects": {
+    "/usr/dotnet/water_telegram_bot/TelegramBot/TelegramBot.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/usr/dotnet/water_telegram_bot/TelegramBot/TelegramBot.csproj",
+        "projectName": "TelegramBot",
+        "projectPath": "/usr/dotnet/water_telegram_bot/TelegramBot/TelegramBot.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/usr/dotnet/water_telegram_bot/TelegramBot/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Npgsql": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Telegram.Bot": {
+              "target": "Package",
+              "version": "[16.0.2, )"
+            },
+            "Telegram.Bot.Extensions.Polling": {
+              "target": "Package",
+              "version": "[0.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
