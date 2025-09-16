@@ -95,10 +95,10 @@ namespace ApiAll.Controllers.water
                 }
 
                 // 4. updateOrderFullReturningInfo
-                waterOrder.reserverd_numeric_id_1 = dto.OlinganBakalshkaSoni;
+                waterOrder.reserverd_numeric_id_1 = -1 * dto.OlinganBakalshkaSoni;
                 waterOrder.reserverd_numeric_id_2 = dto.BerilganBakalshkaSoni;
                 waterOrder.reserverd_number_id_1 = bottleInfo.id; // yoki dto.CheckId
-                waterOrder.reserverd_number_id_2 = dto.CheckId;
+                waterOrder.reserverd_number_id_2 = dto.Check.id;
                 _context.WaterOrder.Update(waterOrder);
                 await _context.SaveChangesAsync();
 
